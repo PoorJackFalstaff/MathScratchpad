@@ -1,30 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Math Scratchpad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="./style.css">
 
-    <title>Hello world!</title>
-
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css" />
-
-    <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
-  </head>
-  <body>
-    <!-- this is the start of content -->
-    <h1>
-      Hello World!
-    </h1>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+  <div id = "header">
     <p>
-      This starter gives you everything you need to start working on a new
-      website, and nothing more. If you're looking for something a little more
-      opinionated, try remixing
-      <a href="https://glitch.com/edit/#!/remix/glitch-hello-website"
-        >~glitch-hello-website</a
-      >.
+      Math Scratchpad
     </p>
-  </body>
+  </div>
+  
+  <div id = "navigation">
+    
+  </div>
+  <div id = "spreadsheet" class = "view">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th contenteditable>A</th>
+          <th contenteditable>B</th>
+          <th contenteditable>C</th>
+          <th contenteditable>D</th>
+          <th contenteditable>E</th>
+          <th contenteditable>F</th>
+          <th contenteditable>G</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class = "vertical-header" contenteditable>1</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>2</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>3</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>4</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>5</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>6</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>7</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>8</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+        <tr>
+          <th class = "vertical-header" contenteditable>9</th>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+          <td class = "cell" contenteditable></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div id = "footer">
+    
+  </div>
+<!--   <div id = "grid-container">
+    <div id = "top-label" class = "row">
+    <div class = "row">
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+    </div>
+    <div class = "row">
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+    </div>
+    <div class = "row">
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+    </div>
+    <div class = "row">
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+    </div>
+    <div class = "row">
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+      <div class = "cell" contenteditable></div>
+    </div>
+  </div> -->
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
 </html>
