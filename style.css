@@ -3,13 +3,13 @@ body {
   height: 100vh;
   display: grid;
   grid-template-areas:
-    "head head head head"
-    "nav main main main"
-    "nav main main main"
-    "foot foot foot foot";
+    "head head head"
+    "nav main opt1"
+    "nav opt2 opt2"
+    "foot foot foot";
   
-  grid-template-rows: 10% 40% 40% 10%;
-  grid-template-columns: 10% 50% 30% 10%;
+  grid-template-rows: 10% 60% 20% 10%;
+  grid-template-columns: 10% 70% 20%;
 }
 
 #header {
@@ -41,6 +41,7 @@ body {
 
 #spreadsheet {
   grid-area: main;
+  overflow: scroll;
 }
 table {
 /*   margin-left: 50px; */
@@ -67,8 +68,18 @@ thead th {
   height: 2vh;
 }
 
+#options1 {
+  grid: opt1;
+  background-color:red;
+}
+
+#options2 {
+  grid: opt2;
+  background-color: blue;
+}
+
 #footer {
   background-color: black;
   color: white;
-  grid-area: foot
+  grid-area: foot;
 }
