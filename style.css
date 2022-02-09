@@ -1,12 +1,28 @@
 body {
+  width: 100vw;
+  height: 100vh;
   display: grid;
-  grid-template-area:
+  grid-template-areas:
     "head head head head"
-    "nav view view op1"
-    "nav view view op1"
+    "nav main main main"
+    "nav main main main"
     "foot foot foot foot";
+  
+  grid-template-rows: 10% 40% 40% 10%;
+  grid-template-columns: 10% 50% 30% 10%;
 }
 
+#header {
+  background-color: black;
+  color: white;
+  text-align: center;
+  grid-area: head;
+}
+#navigation {
+  background-color:black;
+  color:white;
+  grid-area: nav;
+}
 .cell {
   border-top: 1px solid gray;
   border-left: 1px solid gray;
@@ -23,9 +39,12 @@ body {
   cursor: text;
 }
 
+#spreadsheet {
+  grid-area: main;
+}
 table {
-  margin-left: 50px;
-  margin-top: 10px;
+/*   margin-left: 50px; */
+/*   margin-top: 10px; */
   border-left: 1px solid black;
   border-top: 1px solid black;
   border-right: 1px solid black;
@@ -46,4 +65,10 @@ thead th {
   border-left: 1px solid black;
   border-bottom: 1px solid black;
   height: 2vh;
+}
+
+#footer {
+  background-color: black;
+  color: white;
+  grid-area: foot
 }
