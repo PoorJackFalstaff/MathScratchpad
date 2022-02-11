@@ -7,7 +7,6 @@ body {
     "nav main opt1"
     "nav opt2 opt2"
     "foot foot foot";
-  
   grid-template-rows: 10% 60% 20% 10%;
   grid-template-columns: 10% 70% 20%;
 }
@@ -73,14 +72,16 @@ thead th {
 }
 
 #options1 {
-  grid: opt1;
+  grid-area: opt1;
   background-color:gray;
 }
 
 #options2 {
-  grid: opt2;
+  grid-area: opt2;
   background-color: gray;
 }
+
+
 
 #footer {
   grid-area: foot;
