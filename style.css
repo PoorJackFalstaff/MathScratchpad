@@ -32,13 +32,15 @@ body {
   width: 8vw;
   height: 2vh;
   line-height: 2vh;
-  font-size: 3vw;
+  font-size: 2vw;
   cursor: cell;
 }
 
 .cell:focus {
   outline: none;
-/*   cursor: text; */
+  vertical-align: middle;
+  caret-color: white;
+  color: white;
 }
 
 #spreadsheet {

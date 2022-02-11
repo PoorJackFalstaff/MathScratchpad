@@ -8,7 +8,7 @@ const setupCellInteractivity = (cells) => {
       if(document.activeElement !== cell) cell.style.backgroundColor = "white";
     })
     cell.addEventListener("focusin", () => {
-      cell.style.backgroundColor = "gray";
+      cell.style.backgroundColor = "black";
     })
     cell.addEventListener("focusout", () => {
       cell.style.backgroundColor = "white";
@@ -104,10 +104,10 @@ const evaluateCell = (cell) => {
   //if cell contains certain characters only, it is considered text and not evaluated further
   //so far, function only continues if following found: +,-,*,/,^
   //will also end if leading - without any other 'operators'
+  //doesn't yet handle stuff like 4**5, which leads to NaN error
   //TO DO: add basic stuff like abs()..
   if(/^-[^\+\-\*/\^]+$|^[^\+\-\*/\^]+$/.test(txt)) return;
   const twoTerms = [...txt.matchAll(/\d+|[\+\-\*\^\/]/g)].flat();
-  console.log(twoTerms);
   document.activeElement.innerText = arithmeticTwoTerms(twoTerms[0], twoTerms[1], twoTerms[2]);
 }
 
