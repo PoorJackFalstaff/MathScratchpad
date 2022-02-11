@@ -28,16 +28,17 @@ body {
   border-top: 1px solid gray;
   border-left: 1px solid gray;
   text-align: center;
+  vertical-align: middle;
   width: 8vw;
   height: 2vh;
   line-height: 2vh;
-  font-size: 3vh;
+  font-size: 3vw;
   cursor: cell;
 }
 
 .cell:focus {
   outline: none;
-  cursor: text;
+/*   cursor: text; */
 }
 
 #spreadsheet {
