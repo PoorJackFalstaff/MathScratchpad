@@ -13,16 +13,16 @@ body {
 }
 
 #header {
+  grid-area: head;
   background-color: black;
   color: white;
   text-align: center;
-  grid-area: head;
 }
 
 #navigation {
+  grid-area: nav;
   background-color:black;
   color:white;
-  grid-area: nav;
 }
 
 .cell {
@@ -83,7 +83,7 @@ thead th {
 }
 
 #footer {
+  grid-area: foot;
   background-color: black;
   color: white;
-  grid-area: foot;
 }
