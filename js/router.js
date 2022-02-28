@@ -1,14 +1,17 @@
 "use strict";
-console.log("hello there")
+
 class Router {
   constructor(routes) {
     this.routes = routes;
     this.rootElem = document.getElementById("app");
+    console.log("ROUTER CREATED", this.routes)
     this.start();
   }
   
   start() {
+    
     const r = this.routes;
+    console.log("ROUTER STARTED", this.routes);
     (function(scope, r) {
       window.addEventListener("routechange", () => {
         scope.hasChanged(scope, r)
@@ -18,6 +21,7 @@ class Router {
   }
   
   hasChanged(scope, r) {
+    console.log("SCOPE HAS CHANGED");
     if(window.location.hash.length > 0) {
       for(let i = 0; i < r.length; i++) {
         let route = r[i];
@@ -27,8 +31,10 @@ class Router {
       }
     } else {
       for(let i = 0; i < r.length; i++) {
+        console.log(r[i])
         let route = r[i];
-        if(route.default) {
+        if(route.defaultRoute) {
+          console.log("THIS IS THE DEFAULT ROUTE!!")
           scope.goToRoute(route.htmlName);
         }
       }
@@ -36,6 +42,7 @@ class Router {
   }
   
   goToRoute(htmlName) {
+    console.log("GOING TO ", htmlName);
     (function(scope) {
       const url = "views/" + htmlName
       const xhttp = new XMLHttpRequest();
