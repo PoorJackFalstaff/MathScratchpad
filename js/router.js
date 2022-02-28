@@ -42,12 +42,15 @@ class Router {
   }
   
   goToRoute(htmlName) {
+    console.log("THIS", this)
     console.log("GOING TO ", htmlName);
     (function(scope) {
-      const url = "views/" + htmlName
+      const url = "views/" + htmlName;
+      console.log("URL:::", url);
       const xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = () => {
-        if(this.readyState === 4 && this.status === 200) {
+      xhttp.onreadystatechange = function ()  {
+        console.log("second this",  this);
+        if(this.readyState && this.readyState === 4 && this.status === 200) {
           scope.rootElem.innerHTML = this.responseText;
         }
       };
