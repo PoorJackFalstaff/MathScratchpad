@@ -1,5 +1,5 @@
 "use strict";
-
+console.log("hello there")
 class Router {
   constructor(routes) {
     this.routes = routes;
@@ -39,7 +39,13 @@ class Router {
     (function(scope) {
       const url = "views/" + htmlName
       const xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange
-    }) 
+      xhttp.onreadystatechange = () => {
+        if(this.readyState === 4 && this.status === 200) {
+          scope.rootElem.innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", url, true);
+      xhttp.send();
+    })(this); 
   }
 }
