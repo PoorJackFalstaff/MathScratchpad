@@ -13,10 +13,12 @@ class Router {
     const r = this.routes;
     console.log("ROUTER STARTED", this.routes);
     (function(scope, r) {
-      window.addEventListener("routechange", () => {
+      console.log("ADDING EVENT LISTENER")
+      window.addEventListener("hashchange", () => {
+        console.log("HASH CHANGE!!");
         scope.hasChanged(scope, r)
-      })
-    });
+      });
+    })(this,r)
     this.hasChanged(this, r);
   }
   
