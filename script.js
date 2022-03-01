@@ -1,3 +1,5 @@
+alert("SPREADSHEET JS LOADED")
+
 const setupCellInteractivity = (cells) => {
   //make changes to cells, checking if the cell is selected or not
   for(let cell of cells) {
