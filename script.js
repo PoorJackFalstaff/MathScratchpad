@@ -19,7 +19,7 @@ const setupCellInteractivity = (cells) => {
       cellKeySetup(evt);
     })
     cell.addEventListener("mousedown", evt => {
-      highlightCells();
+      highlightCells(evt);
     })
   }
 }
@@ -128,9 +128,11 @@ const arithmeticTwoTerms = (a, operator, b) => {
 }
 
 const highlightCells = () => {
-//   let cells = [document.activeCell];
-  
-//   console.log(cells);
+  if
 }
 
-setupCellInteractivity(document.querySelectorAll(".cell"));
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.oncontextmenu = () => false;
+  setupCellInteractivity(document.querySelectorAll(".cell"));
+})

@@ -35,6 +35,7 @@ body {
   line-height: 2vh;
   font-size: 2vw;
   cursor: cell;
+  overflow: hidden;
 }
 
 .cell:focus {
