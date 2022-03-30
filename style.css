@@ -38,6 +38,10 @@ body {
   overflow: hidden;
 }
 
+.cell:hover {
+  background-color: lightgray;
+}
+
 .cell:focus {
   outline: none;
   vertical-align: middle;

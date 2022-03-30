@@ -1,16 +1,22 @@
 let cells = document.querySelectorAll(".cell");
 
+const settings = {
+  
+}
+
 const setupCellInteractivity = (cells) => {
   //make changes to cells, checking if the cell is selected or not
   for(let cell of cells) {
-    cell.addEventListener("mouseover", () => {
-      if(document.activeElement !== cell) cell.style.backgroundColor = "lightgray";
-    })
-    cell.addEventListener("mouseout", () => {
-      if(document.activeElement !== cell) cell.style.backgroundColor = "white";
-    })
-    cell.addEventListener("focusin", () => {
-      // cell.style.backgroundColor = "black";
+    
+    // cell.addEventListener("mouseover", () => {
+    //   if(document.activeElement !== cell) cell.style.backgroundColor = "lightgray";
+    // })
+    // cell.addEventListener("mouseout", () => {
+    //   //don't allow loss of hl color when mouse moved out
+    //   if(document.activeElement !== cell && cell.style.backGroundColor === "lightgray") cell.style.backgroundColor = "white";
+    // })
+    cell.addEventListener("focusin", (evt) => {
+      cell.style.backgroundColor = "black";
     })
     cell.addEventListener("focusout", () => {
       cell.style.backgroundColor = "white";
@@ -129,6 +135,7 @@ const arithmeticTwoTerms = (a, operator, b) => {
 
 const highlightCells = (evt) => {
   if(evt.button === 2) {
+    evt.preventDefault();
     evt.target.style.backgroundColor = "darkred";
     evt.target.style.fontWeight = "bold";
   }
