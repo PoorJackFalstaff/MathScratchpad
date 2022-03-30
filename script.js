@@ -1,4 +1,5 @@
-let cells = document.querySelectorAll(".cell");
+const spreadsheet = document.getElementById("spreadsheet");
+const cells = document.querySelectorAll(".cell");
 
 let backgroundState = {
   untouched: "white", 
@@ -157,6 +158,6 @@ const highlightCells = (evt) => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.oncontextmenu = () => false;
+  spreadsheet.oncontextmenu = () => false;
   setupCellInteractivity(cells);
 })

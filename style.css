@@ -31,11 +31,13 @@ body {
   text-align: center;
   vertical-align: middle;
   width: 8vw;
+  max-width: 8vw;
   height: 2vh;
-  line-height: 2vh;
-/*   font-size: 2vw; */
+  max-height: 2vh;
+  font-size: 1.5vw;
   cursor: cell;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .cell:hover {
