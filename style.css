@@ -33,7 +33,7 @@ body {
   width: 8vw;
   height: 2vh;
   line-height: 2vh;
-  font-size: 2vw;
+/*   font-size: 2vw; */
   cursor: cell;
   overflow: hidden;
 }

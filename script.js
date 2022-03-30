@@ -18,6 +18,7 @@ const setupCellInteractivity = (cells) => {
     //   if(document.activeElement !== cell && cell.style.backGroundColor === "lightgray") cell.style.backgroundColor = "white";
     // })
     cell.addEventListener("focusin", (evt) => {
+      if(cell.style.backgroundColor === backgroundState.highlighted) return
       cell.style.backgroundColor = backgroundState.selected;
     })
     cell.addEventListener("focusout", () => {
@@ -137,10 +138,20 @@ const arithmeticTwoTerms = (a, operator, b) => {
 }
 
 const highlightCells = (evt) => {
+  //either highlight cell, or unhighlight it, making sure to change its color to selected if it's the active element
   if(evt.button === 2) {
     evt.preventDefault();
-    evt.target.style.backgroundColor = backgroundState.highlighted;
-    evt.target.style.fontWeight = "bold";
+    const targ = evt.target;
+    if(targ.style.backgroundColor === backgroundState.highlighted) {
+      if(targ === document.activeElement) {
+        targ.style.backgroundColor = backgroundState.selected;
+      } else {
+        targ.style.backgroundColor = backgroundState.untouched;
+      }
+    } else {
+      targ.style.backgroundColor = backgroundState.highlighted;
+    targ.style.fontWeight = "bold";
+    } 
   }
 }
 
