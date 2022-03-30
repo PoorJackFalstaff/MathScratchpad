@@ -41,8 +41,10 @@ body {
 .cell:focus {
   outline: none;
   vertical-align: middle;
+  align-items: center;
   caret-color: white;
   color: white;
+  background-color: black;
 }
 
 #spreadsheet {

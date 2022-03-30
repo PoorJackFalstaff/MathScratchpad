@@ -1,4 +1,4 @@
-
+let cells = document.querySelectorAll(".cell");
 
 const setupCellInteractivity = (cells) => {
   //make changes to cells, checking if the cell is selected or not
@@ -10,7 +10,7 @@ const setupCellInteractivity = (cells) => {
       if(document.activeElement !== cell) cell.style.backgroundColor = "white";
     })
     cell.addEventListener("focusin", () => {
-      cell.style.backgroundColor = "black";
+      // cell.style.backgroundColor = "black";
     })
     cell.addEventListener("focusout", () => {
       cell.style.backgroundColor = "white";
@@ -127,12 +127,15 @@ const arithmeticTwoTerms = (a, operator, b) => {
   return result; 
 }
 
-const highlightCells = () => {
-  if
+const highlightCells = (evt) => {
+  if(evt.button === 2) {
+    evt.target.style.backgroundColor = "darkred";
+    evt.target.style.fontWeight = "bold";
+  }
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
   document.oncontextmenu = () => false;
-  setupCellInteractivity(document.querySelectorAll(".cell"));
+  setupCellInteractivity(cells);
 })
