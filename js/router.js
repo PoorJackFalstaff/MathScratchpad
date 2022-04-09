@@ -53,6 +53,7 @@ class Router {
       xhttp.onreadystatechange = function ()  {
         console.log("second this",  this);
         if(this.readyState && this.readyState === 4 && this.status === 200) {
+          console.log(`SCOPE: ${scope.rootElem}`)
           scope.rootElem.innerHTML = this.responseText;
         }
       };
