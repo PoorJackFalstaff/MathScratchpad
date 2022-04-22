@@ -1,0 +1,81 @@
+canvas {
+  position: absolute;
+  border: 1px solid red;
+  cursor: crosshair;
+}
+
+#tools {
+  position: absolute;
+  bottom: 1vh;
+  width: 95vw;
+  background-color: lightgray;
+  height: 15vh;
+}
+
+.tool {
+  float: left;
+  width: 10%;
+  height: 100%;
+  margin-right: 10px;
+}
+
+.color {cursor: pointer}
+.color,.shape {
+  float: left;
+  width: 20%;
+  height: 50%;
+}
+.color:nth-child(1) {
+  background-color: red;
+}
+
+#red_stroke { background-color: red}
+#blue_stroke {background-color: blue}
+#black_stroke {background-color: black}
+#green_stroke {background-color: green}
+#purple_stroke {background-color: purple}
+#pink_stroke {background-color: pink}
+#gray_stroke {background-color: gray}
+#yellow_stroke {background-color: yellow}
+#chartreuse_stroke {background-color: chartreuse}
+#orange_stroke {background-color: orange}
+
+#colors_size_chosen {
+  width: 7%;
+}
+#colors_chosen {
+  width: 100%;
+  height: 50%;
+}
+#colors_chosen>div {
+  width:50%;
+  height: 100%;
+  float: left;
+  background-color: red;
+}
+
+.selectable {
+  /*the items that get a border/bg highlight when selected..does NOT include the color strokes */
+  cursor: pointer;
+}
+.selected {
+  border: 1px solid green;
+  backgroundColor: rgba(0,255,0,.1)
+}
+#size_chosen {
+  float: left;
+  width: 100%;
+  height: 50%;
+}
+#size_chosen>div {
+  width: 25%;
+  height: 100%;
+  float: left;
+}
+
+.selectable {
+  box-sizing: border-box;
+}
+#eraser {
+  background-color: white;
+}
