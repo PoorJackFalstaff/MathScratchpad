@@ -1,0 +1,3 @@
+- Add quick grid creator
+  - Can do things like allow highlighting of cells based on conditions (individual cells, rows, cols, kernels, etc.)
+  - Can allow numbers to be entered
