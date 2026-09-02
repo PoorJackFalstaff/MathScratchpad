@@ -1,7 +1,7 @@
 export let settings = {
   _colorMain: "black",
   _colorAlt: "white",
-   _lineWidth: 3,
+  _lineWidth: 3,
   _action: "pen",
   _startPosition: [undefined, undefined], //used for things drawn on overlay first, like lines and boxes
   _shift: false,
