@@ -1,3 +1,5 @@
+import {settings} from "./settings.js";
+
 //POSSIBLY TO DO: fix "spray paint" effect with paint, particularly noticeable at 5/7 lineWidths
 const canvas = document.getElementById("draw");
 const ctx = canvas.getContext("2d");
@@ -16,28 +18,8 @@ const clearButton = document.getElementById("clear");
 let mouseXY = [undefined,undefined]
 let mouseHeld = false;
 let history = [];
-let currentPath = [];
-let curr = {
-  color0: "black",
-  color2: "white",
-  lw: 3,
-  act: "pen",
-  stPos: [undefined, undefined], //used for things drawn on overlay first, like lines and boxes
-  shift: false,
-  
-  get color_main() {return this.col0},
-  set color_main(color) {this.col0 = color},
-  get color_alt() {return this.col2},
-  set color_alt(color) {this.col2 = color},
-  get lineWidth() {return this.lw},
-  set lineWidth(width) {this.lw = width},
-  get action() {return this.act},
-  set action(act) {this.act = act},
-  get startPos() {return this.stPos},
-  set startPos(pos) {this.stPos = pos},
-  get shiftHeld() {return this.shift},
-  set shiftHeld(bool) {this.shift = bool}
-}
+let settingsentPath = [];
+
 
 let tableSettings = {
   cols: 5,
@@ -86,25 +68,25 @@ overlay.addEventListener("mousedown", (evt) => {
   if(mouseHeld) return;
   
   mouseXY = [evt.clientX, evt.clientY];
-  ctx.strokeStyle = curr.color_main;
-  ctx.lineWidth = curr.lineWidth;
-  ctxOverlay.strokeStyle = curr.color_main;
-  ctxOverlay.lineWidth = curr.lineWidth;
-  if(curr.action === "pen") return startPen(mouseXY);
-  if(curr.action === "line") return startLine(mouseXY);
-  if(curr.action === "rectangle") return startRectangle(mouseXY);
-  if(curr.action === "table") return startTable(mouseXY);
-  if(curr.action === "cartesian") return startCartesian(mouseXY);
+  ctx.strokeStyle = settings.colorMain;
+  ctx.lineWidth = settings.lineWidth;
+  ctxOverlay.strokeStyle = settings.colorMain;
+  ctxOverlay.lineWidth = settings.lineWidth;
+  if(settings.action === "pen") return startPen(mouseXY);
+  if(settings.action === "line") return startLine(mouseXY);
+  if(settings.action === "rectangle") return startRectangle(mouseXY);
+  if(settings.action === "table") return startTable(mouseXY);
+  if(settings.action === "cartesian") return startCartesian(mouseXY);
 })
 
 
 overlay.addEventListener("mousemove", (evt) => {
   if(!mouseHeld) return;
-  if(curr.action === "pen") return drawPen(evt);
-  if(curr.action === "line") return drawLine(evt);
-  if(curr.action === "rectangle") return drawRectangle(evt);
-  if(curr.action === "table") return drawTable(evt);
-  if(curr.action === "cartesian") return drawCartesian(evt);
+  if(settings.action === "pen") return drawPen(evt);
+  if(settings.action === "line") return drawLine(evt);
+  if(settings.action === "rectangle") return drawRectangle(evt);
+  if(settings.action === "table") return drawTable(evt);
+  if(settings.action === "cartesian") return drawCartesian(evt);
 })
 
 document.addEventListener("mouseup", () => endDrawing())
@@ -128,7 +110,7 @@ for(let color of document.querySelectorAll(".color")) {
 }
 const overlayDrawSetup = (mouseXY) => {
   ctxOverlay.clearRect(0,0,canvas.width, canvas.height);
-  curr.startPos = mouseXY;
+  settings.startPos = mouseXY;
   mouseHeld = true;
 }
 
@@ -148,7 +130,7 @@ function startPen(mouseXY) {
   const params = [mouseXY[0], mouseXY[1], .5, 0, Math.PI*2];
   ctx.arc(...params);
   ctx.fill();
-  currentPath.push({"circle" : params});
+  settingsentPath.push({"circle" : params});
   mouseHeld = true;
 }
 function drawPen(evt) {
@@ -156,7 +138,7 @@ function drawPen(evt) {
   ctx.moveTo(mouseXY[0], mouseXY[1]);
   ctx.lineTo(newX, newY);
   ctx.stroke();
-  currentPath.push({"line": [mouseXY[0], mouseXY[1], newX, newY]});
+  settingsentPath.push({"line": [mouseXY[0], mouseXY[1], newX, newY]});
   mouseXY = [newX, newY];
 }
 //LINE DRAWING
@@ -165,7 +147,7 @@ function startLine(mouseXY) {
 }
 function drawLine(evt) {
   let endX, endY;
-  if(curr.shiftHeld) {
+  if(settings.shiftHeld) {
     //multiples of pi/4 only
     [endX, endY] = getShiftHeldLineEnd(evt.clientX, evt.clientY);
   } else {
@@ -173,12 +155,12 @@ function drawLine(evt) {
     endY = evt.clientY;
   }
   ctxOverlay.clearRect(0,0,canvas.width,canvas.height);
-  drawLinePart(ctxOverlay, ...curr.startPos, endX, endY);
+  drawLinePart(ctxOverlay, ...settings.startPos, endX, endY);
 }
 function getShiftHeldLineEnd(mouseX, mouseY) {
   //multiples of pi/4. Get the angle, see which angle it's closest to, and draw line based on that angle. for cardinal directions, the length of this line is easy, since it can just match the vertical or horiz position of mouse, but for other 4, it's more complicated, because could go with either..or mix of both. paint uses some formula based on x & y....not sure if I like it all that much though..
-  const x = mouseX - curr.startPos[0];
-  const y = mouseY - curr.startPos[1];
+  const x = mouseX - settings.startPos[0];
+  const y = mouseY - settings.startPos[1];
   const angle = Math.atan(y/x);
   let newAngle = getNewShiftLineAngle(angle, y < 0);
   
@@ -215,7 +197,7 @@ function startRectangle(mouseXY) {
 function drawRectangle(evt) {
   ctxOverlay.clearRect(0,0,canvas.width,canvas.height);
   ctxOverlay.beginPath();
-  ctxOverlay.rect(...curr.startPos, evt.clientX - curr.startPos[0], evt.clientY - curr.startPos[1]);
+  ctxOverlay.rect(...settings.startPos, evt.clientX - settings.startPos[0], evt.clientY - settings.startPos[1]);
   ctxOverlay.stroke();
 }
 
@@ -226,16 +208,16 @@ function startTable(mouseXY) {
 function drawTable(evt) {
   drawRectangle(evt);
   //after adding the rectangle, add vertical and horizontal lines
-  const colSpacing = (evt.clientX - curr.startPos[0]) / tableSettings.column_count;
-  const rowSpacing = (evt.clientY - curr.startPos[1]) / tableSettings.row_count;
+  const colSpacing = (evt.clientX - settings.startPos[0]) / tableSettings.column_count;
+  const rowSpacing = (evt.clientY - settings.startPos[1]) / tableSettings.row_count;
   for(let i = 1; i < tableSettings.column_count; i++) {
     //all cols start at startPos y and end at client y...evenly spaced, and two lines have been placed, so 
     //start at 1
-    drawLinePart(ctxOverlay, curr.startPos[0] + i * colSpacing, curr.startPos[1], null, evt.clientY);
+    drawLinePart(ctxOverlay, settings.startPos[0] + i * colSpacing, settings.startPos[1], null, evt.clientY);
   }
   for(let i = 1; i < tableSettings.row_count; i++) {
     //all rows start at startpos x and end at client x--""""""
-    drawLinePart(ctxOverlay, curr.startPos[0], curr.startPos[1] + i * rowSpacing, evt.clientX, null);
+    drawLinePart(ctxOverlay, settings.startPos[0], settings.startPos[1] + i * rowSpacing, evt.clientX, null);
   }
 }
 
@@ -244,14 +226,14 @@ function startCartesian(mouseXY) {
 }
 function drawCartesian(evt) {
   //only does full cartesians for now
-  const xDelta = evt.clientX - curr.startPos[0];
-  const yDelta = evt.clientY - curr.startPos[1];
+  const xDelta = evt.clientX - settings.startPos[0];
+  const yDelta = evt.clientY - settings.startPos[1];
   ctxOverlay.clearRect(0,0,canvas.width,canvas.height);
   ctxOverlay.lineWidth = 4;
   //x=0
-  drawLinePart(ctxOverlay, curr.startPos[0] + xDelta/2, curr.startPos[1], null, evt.clientY);
+  drawLinePart(ctxOverlay, settings.startPos[0] + xDelta/2, settings.startPos[1], null, evt.clientY);
   //y=0
-  drawLinePart(ctxOverlay, curr.startPos[0], curr.startPos[1] + yDelta/2, evt.clientX, null)
+  drawLinePart(ctxOverlay, settings.startPos[0], settings.startPos[1] + yDelta/2, evt.clientX, null)
   
   ctxOverlay.lineWidth = 1;
   // ctxOverlay.globalAlpha = .2;
@@ -260,9 +242,9 @@ function drawCartesian(evt) {
   for(let i = 1; i <= cartesianSettings.vert_count; i++) {
     //right
     ctxOverlay.globalAlpha = i % 5 === 0? 0.3 : 0.1;
-    drawLinePart(ctxOverlay, curr.startPos[0] + xDelta/2 + i * xSpacing, curr.startPos[1], null, evt.clientY);
+    drawLinePart(ctxOverlay, settings.startPos[0] + xDelta/2 + i * xSpacing, settings.startPos[1], null, evt.clientY);
     //left
-    drawLinePart(ctxOverlay, curr.startPos[0] + xDelta/2 - i * xSpacing, curr.startPos[1], null, evt.clientY);
+    drawLinePart(ctxOverlay, settings.startPos[0] + xDelta/2 - i * xSpacing, settings.startPos[1], null, evt.clientY);
   }
   
   //horizontal lines
@@ -270,25 +252,25 @@ function drawCartesian(evt) {
   for(let i = 1; i <= cartesianSettings.horz_count; i++) {
     ctxOverlay.globalAlpha = i % 5 === 0? 0.3 : 0.2;
     //up
-    drawLinePart(ctxOverlay, curr.startPos[0], curr.startPos[1] + yDelta/2 - i * ySpacing, evt.clientX, null);
+    drawLinePart(ctxOverlay, settings.startPos[0], settings.startPos[1] + yDelta/2 - i * ySpacing, evt.clientX, null);
     //down
-    drawLinePart(ctxOverlay, curr.startPos[0], curr.startPos[1] + yDelta/2 + i * ySpacing, event.clientX, null);
+    drawLinePart(ctxOverlay, settings.startPos[0], settings.startPos[1] + yDelta/2 + i * ySpacing, event.clientX, null);
   }
   ctxOverlay.globalAlpha = 1.0;
 }
 
 
-//SET CURRENT ACTIONS BASED ON THE ID OF THE TOOL SELECTED
+//SET settingsENT ACTIONS BASED ON THE ID OF THE TOOL SELECTED
 for(let shape of document.querySelectorAll(".shape")) {
-  shape.addEventListener("click", () => curr.action = shape.id);
+  shape.addEventListener("click", () => settings.action = shape.id);
 }
 
 
 function changeColor(color, mouseBtn) {
   if(mouseBtn === "left") {
-    curr.color_main = color;
+    settings.colorMain = color;
     document.querySelector("#colors_chosen :nth-child(1)").style.backgroundColor = color;
-    // alert("CURRENT COLOR IS NOW" + curr.color_main)
+    // alert("settingsENT COLOR IS NOW" + settings.color_main)
   } 
 }
 
@@ -309,17 +291,17 @@ function setSelected(selected) {
 //CHANGING STROKE WIDTH
 (() => {
   for(let[i,v] of document.querySelectorAll("#size_chosen>div").entries() ) {
-    v.addEventListener("click", () => curr.lineWidth = 2 * i + 1);
+    v.addEventListener("click", () => settings.lineWidth = 2 * i + 1);
   }
 })();
 
 
 //KEY PRESSES
 document.addEventListener("keydown", evt => {
-  if(evt.key === "Shift") curr.shiftHeld = true;
+  if(evt.key === "Shift") settings.shiftHeld = true;
 })
 document.addEventListener("keyup", evt => {
-  if(evt.key === "Shift") curr.shiftHeld = false;
+  if(evt.key === "Shift") settings.shiftHeld = false;
 })
 
 
