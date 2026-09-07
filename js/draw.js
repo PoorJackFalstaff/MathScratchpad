@@ -194,6 +194,7 @@ function getNewShiftLineAngle(angle, upper) {
 function startRectangle(mouseXY) {
   overlayDrawSetup(mouseXY);
 }
+
 function drawRectangle(evt) {
   ctxOverlay.clearRect(0,0,canvas.width,canvas.height);
   ctxOverlay.beginPath();
@@ -205,6 +206,7 @@ function drawRectangle(evt) {
 function startTable(mouseXY) {
   overlayDrawSetup(mouseXY);
 }
+
 function drawTable(evt) {
   drawRectangle(evt);
   //after adding the rectangle, add vertical and horizontal lines
@@ -224,6 +226,7 @@ function drawTable(evt) {
 function startCartesian(mouseXY) {
   overlayDrawSetup(mouseXY);
 }
+
 function drawCartesian(evt) {
   //only does full cartesians for now
   const xDelta = evt.clientX - settings.startPos[0];
@@ -280,6 +283,7 @@ for(let selectable of document.querySelectorAll(".selectable")) {
     setSelected(selectable);
   })
 }
+
 function setSelected(selected) {
   //This function ONLY handles the visual selection aspects(border/bg color)
   Array.from(selected.parentNode.children).forEach(x => {
