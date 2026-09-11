@@ -77,6 +77,7 @@ overlay.addEventListener("mousedown", (evt) => {
   if(settings.action === "rectangle") return startRectangle(mouseXY);
   if(settings.action === "table") return startTable(mouseXY);
   if(settings.action === "cartesian") return startCartesian(mouseXY);
+  throw new Error("Settings action not defined");
 })
 
 
@@ -87,6 +88,7 @@ overlay.addEventListener("mousemove", (evt) => {
   if(settings.action === "rectangle") return drawRectangle(evt);
   if(settings.action === "table") return drawTable(evt);
   if(settings.action === "cartesian") return drawCartesian(evt);
+  throw new Error("Settings action not defined");
 })
 
 document.addEventListener("mouseup", () => endDrawing())
@@ -268,7 +270,7 @@ function drawCartesian(evt) {
 }
 
 
-//SET settingsENT ACTIONS BASED ON THE ID OF THE TOOL SELECTED
+//SET SETTINGS CURRENT ACTIONS BASED ON THE ID OF THE TOOL SELECTED
 for(let shape of document.querySelectorAll(".shape")) {
   shape.addEventListener("click", () => settings.action = shape.id);
 }
