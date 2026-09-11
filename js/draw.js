@@ -133,6 +133,7 @@ function startPen(mouseXY) {
   settingsentPath.push({"circle" : params});
   mouseHeld = true;
 }
+
 function drawPen(evt) {
   const [newX, newY] = [evt.clientX, evt.clientY];
   ctx.moveTo(mouseXY[0], mouseXY[1]);
@@ -141,10 +142,12 @@ function drawPen(evt) {
   settingsentPath.push({"line": [mouseXY[0], mouseXY[1], newX, newY]});
   mouseXY = [newX, newY];
 }
+
 //LINE DRAWING
 function startLine(mouseXY) {
   overlayDrawSetup(mouseXY);
 }
+
 function drawLine(evt) {
   let endX, endY;
   if(settings.shiftHeld) {
@@ -157,6 +160,7 @@ function drawLine(evt) {
   ctxOverlay.clearRect(0,0,canvas.width,canvas.height);
   drawLinePart(ctxOverlay, ...settings.startPos, endX, endY);
 }
+
 function getShiftHeldLineEnd(mouseX, mouseY) {
   //multiples of pi/4. Get the angle, see which angle it's closest to, and draw line based on that angle. for cardinal directions, the length of this line is easy, since it can just match the vertical or horiz position of mouse, but for other 4, it's more complicated, because could go with either..or mix of both. paint uses some formula based on x & y....not sure if I like it all that much though..
   const x = mouseX - settings.startPos[0];
@@ -190,6 +194,7 @@ function getNewShiftLineAngle(angle, upper) {
     }
   }
 }
+
 //RECTANGLE DRAWING
 function startRectangle(mouseXY) {
   overlayDrawSetup(mouseXY);
