@@ -14,7 +14,7 @@ canvas {
 
 .tool {
   float: left;
-  width: 10%;
+  width: 30%;
   height: 100%;
   margin-right: 10px;
 }
@@ -22,7 +22,8 @@ canvas {
 .color {cursor: pointer}
 .color,.shape {
   float: left;
-  width: 20%;
+  height: 50%;
+  aspect-ratio: 1;
   height: 50%;
 }
 .color:nth-child(1) {
