@@ -98,18 +98,9 @@
 
     <div id = "cartesian" class = "shape selectable">
       <svg height = 100% width = 100%>
-        <!--Horizontal Lines, with y = 0 as middle value -->
-        <line x1="5%" y1="5%" x2="95%" y2="5%" style="stroke:rgb(0,0,0);stroke-width:1"/>
-        <line x1="5%" y1="27.5%" x2="95%" y2="27.5%" style="stroke:rgb(0,0,0);stroke-width:1"/>
-        <line x1="5%" y1="50%" x2="95%" y2="50%" style="stroke:rgb(0,0,0);stroke-width:3"/>
-        <line x1="5%" y1="72.5%" x2="95%" y2="72.5%" style="stroke:rgb(0,0,0);stroke-width:1"/>
-        <line x1="5%" y1="95%" x2="95%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:1"/>
-        <!--Vertical lines, with x = 0 as middle value -->
-        <line x1="5%" y1="5%" x2="5%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:1"/>
-        <line x1="27.5%" y1="5%" x2="27.5%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:1"/>
-        <line x1="50%" y1="5%" x2="50%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:3"/>
-        <line x1="72.5%" y1="5%" x2="72.5%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:1"/>
-        <line x1="95%" y1="5%" x2="95%" y2="95%" style="stroke:rgb(0,0,0);stroke-width:1"/>
+        <path d = "M5 5 95 5 M5 27.5 95 27.5 M5 72.5 95 72.5 M5 95 95 95" style = "stroke:rgb(0,0,0); stroke-width:1"/><!-- Horizontal lines, excluding x axis -->
+        <path d = "M5 50 95 50 M50 5 50 95" style = "stroke:rgb(0,0,0); stroke-width: 3"/><!-- Axes -->
+        <path d = "M5 5 5 95 M27.5 5 27.5 95 M72.5 5 72.5 95 M95 5 95 95" style = "stroke:rgb(0,0,0); stroke-width:1"/><!--Vertical lines, excluding y axis -->
       </svg>
     </div>
     
