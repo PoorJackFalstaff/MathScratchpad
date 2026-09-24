@@ -1,15 +1,18 @@
-canvas {
+html, body {
+  overflow-x: hidden;
+}canvas {
   position: absolute;
   border: 1px solid red;
   cursor: crosshair;
+  box-sizing: border-box;
 }
 
 #tools {
   position: absolute;
-  bottom: 1vh;
-  width: 95vw;
+  bottom: .1vh;
+  width: 100%;
   background-color: lightgray;
-  height: 15vh;
+  height: 5vh;
 }
 
 .tool {
@@ -61,7 +64,7 @@ canvas {
 }
 .selected {
   border: 1px solid green;
-  backgroundColor: rgba(0,255,0,.1)
+  background-color: rgba(0,255,0,.1)
 }
 #size_chosen {
   float: left;

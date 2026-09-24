@@ -7,9 +7,9 @@ const overlay = document.getElementById("overlay");
 const ctxOverlay = overlay.getContext("2d");
 //ctxOverlay is interacted with, it sends the information to canvas
 ctx.canvas.height = window.innerHeight * 0.82;
-ctx.canvas.width = window.innerWidth * 0.98;
+ctx.canvas.width = window.innerWidth;
 ctxOverlay.canvas.height = window.innerHeight * 0.82;
-ctxOverlay.canvas.width = window.innerWidth * 0.98;
+ctxOverlay.canvas.width = window.innerWidth;
 
 const tools = document.getElementById("tools");
 const clearButton = document.getElementById("clear");
