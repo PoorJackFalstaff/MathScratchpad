@@ -1,6 +1,8 @@
 html, body {
   overflow-x: hidden;
-}canvas {
+}
+
+canvas {
   position: absolute;
   border: 1px solid red;
   cursor: crosshair;
